@@ -1,0 +1,84 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"></a>
+            </div>
+            <div class="adds"><img src="img/call.png"></div>
+
+       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right effect3">
+                
+                	<li class="page-scroll" ng-repeat="header in headers">
+                		<a href="#/{{header.ctrl}}"><span data-hover="{{header.label}}">{{ header.label }}</span></a>
+                	</li> 	
+
+
+                   
+                </ul>
+            </div>
+               
+        
+        </div>
+</nav>
+
+<section>
+    <div class="container containerWrapper">
+  		<div class="row" ng-init="tab = 0">
+    		<div class="col-md-3">
+      			<div class="lead text-uppercase">Category</div>
+      			<div class="list-group text-uppercase " id="myTab" role="tablist" >
+      				<div ng-repeat="firework in fireworks">
+      					<a class="list-group-item" ng-click="changeView($index,$event)"  ng-class="{active:tab===$index}">{{firework.name}}</a>
+      				</div>
+     			</div>
+    		</div>
+
+    		<div class="col-lg-9 col-md-9 col-sm-12">
+            	<div class="lead text-uppercase">Shopping Cart <div class="pull-right">Grand Total: <span class="fa fa-inr 2x"> <span class="grantTotal "ng-bind="grantTotal">0.00</span></span></div>
+            	</div>
+            	<div class="tab-content">
+            		<div ng-repeat="firework in fireworks" >
+	            		<div class="table-responsive tab-pane fade in" role="tabpanel" id="{{firework.id}}"  ng-show="tab ==={{$index}}">
+							<table class="table table-bordered tbl-cart">
+								<thead>
+	                        		<tr><td colspan="5">{{firework.name}}</td></tr>
+	                            	<tr>
+	                                	<td>Product Name</td>
+	                                	<td class="td-qty">Quantity</td>
+	                                	<td>Unit Price</td>
+	                                	<td>Sub Total</td>
+	                                </tr>
+	                        	</thead>
+	                        	<tbody>
+
+	                        		<tr ng-repeat="product in firework.products">
+                                        <td><a data-content="&lt;img src='{{product.banner}}'&gt;" data-html="true" data-popover="true" class="" data-original-title="" title="">{{product.name}}   </a>
+                                        </td>
+                                        <td>
+                                           <input type="number" data-rate="{{product.amt}}" class="qtySelect"  ng-init="product.quan = 0" ng-model="product.quan" ng-change="calculAmt($index,firework)" ></input>
+                                        </td>
+                                        <td class="price"> <span class="fa fa-inr" > {{product.amt}}</span></td>
+                                        <td><span class="fa fa-inr"></span> <span class="subtotal"  ng-init="product.tot=0" ng-bind ="product.tot"></span></td>
+                                    </tr>
+									<tr class="tr-total"><td align="right" colspan="3">Total</td><td class="" colspan="2"><b><span class="fa fa-inr"></span> <span class="total" ng-init="firework.tot = 0" >{{firework.tot}}</span></b></td></tr>
+	                        		
+	                        	</tbody>
+								
+	                        </table>
+	                    </div>
+                    </div>
+                </div>
+            </div>        
+
+
+    	</div>
+    </div>		
+</section>

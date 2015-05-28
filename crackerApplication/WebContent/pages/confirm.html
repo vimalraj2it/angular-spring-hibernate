@@ -1,0 +1,103 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"></a>
+            </div>
+            <div class="adds"><img src="img/call.png"></div>
+
+       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right effect3">
+                
+                	<li class="page-scroll" ng-repeat="header in headers">
+                		<a href="#/{{header.ctrl}}"><span data-hover="{{header.label}}">{{ header.label }}</span></a>
+                	</li> 	
+
+
+                   
+                </ul>
+            </div>
+               
+        
+        </div>
+</nav>
+
+<section>
+   
+ <div class="container containerWrapper">
+<div id="confimContainer" class="row">
+  <div class="colo-lg-2 col-md-2 col-sm-12 hidden-xs hidden-sm"><img src="img/lft_banner2.gif" alt="" title=""></div>
+    <div class="col-lg-10 col-md-10 col-sm-12">
+              <div class="lead text-uppercase">Shopping Cart</div>
+                 <div class="table-responsive tab-pane active fade in">
+     <table class="table table-bordered tbl-cart">
+      <thead>
+                            
+                        <tr><td>Product Name</td><td class="td-qty">Quantity</td><td>Unit Price</td><td>Sub Total</td></tr></thead>
+                        <tbody ng-repeat="firework in fireworks">
+                           
+                        <tr class="listHead" ><td colspan="5">{{firework.name}}</td></tr>
+						<tr ng-repeat="product in firework.products" ><td>{{product.name}} </td><td >{{product.quan}}</td><td><span class="fa fa-inr"></span>  {{product.amt}}</td><td><span class="fa fa-inr"></span> {{product.tot}}</td></tr>
+						
+						<tr><td align="right" colspan="3">Total</td><td colspan="2" class="total"><b><span class="fa fa-inr"></span> {{firework.tot}}</b></td></tr>
+						
+						
+						</tbody>
+						<tfoot>{{}}</tfoot>
+     </table>
+                    </div>
+                    
+ 
+     
+     <div class="lead text-uppercase">Please confirm your address</div>
+                 <div class="container-fluid ">
+     <form name="sentMessage" id="confirmOrder" novalidate="novalidate" class="bv-form"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                    
+                        <div class="row control-group">
+                            <div class="form-group col-sm-12 col-md-6 floating-label-form-group controls has-feedback">
+                                <label>Phone Number</label>
+                                <input type="tel"  class="form-control" placeholder="Phone Number" id="phone" name="phone"  ng-model ="user.phoneNo">
+        
+                           </div>
+                            <div class="form-group col-sm-12 col-md-6 floating-label-form-group controls has-feedback">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" required=""  name="email" ng-init="user.email=''" ng-model ="user.email">
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group  col-sm-12 col-md-6 floating-label-form-group controls has-feedback">
+                                <label>Name</label>
+                                <input  class="form-control" placeholder="Name" id="name" required=""  name="name" ng-init="user.name=''" ng-model ="user.name"/>
+                           </div>
+						    <div class="form-group  col-sm-12 col-md-6 floating-label-form-group controls has-feedback">
+                                <label>Address</label>
+                                <input  class="form-control" placeholder="Address" id="address" required=""  name="address" ng-init="user.address=''" ng-model ="user.address"></input>
+                           </div>
+                        </div>
+                     
+                       
+                      
+                        
+                        
+                        
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-6 col-sm-12 col-md-6">
+                                <button type ="button" class="btn btn-warning btn-lg" ng-click="confirmOrder()" >Confirm order</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+
+             </div>
+         </div>  
+</div>		 
+</section>
